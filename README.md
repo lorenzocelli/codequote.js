@@ -1,0 +1,1 @@
+# codequote.js
