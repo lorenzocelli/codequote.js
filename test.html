@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeQuote Test</title>
+    <script src="./codequote.js" type="text/javascript"></script>
+    <style>
+        p {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Codequote test</h1>
+    <p>Code snippets from the Linux kernel, lines 714-729 of watchdog.c:</p>
+    <pre><code data-src="https://raw.githubusercontent.com/torvalds/linux/refs/heads/master/kernel/watchdog.c" data-lines="714-729"></code></pre>
+    <p>Quote linux kernel readme in full:</p>
+    <pre><code data-src="https://raw.githubusercontent.com/torvalds/linux/refs/heads/master/README"></code></pre>
+    <p>Nested code with trimming:</p>
+    <pre><code data-src="https://raw.githubusercontent.com/torvalds/linux/refs/heads/master/kernel/async.c" data-lines="264-270"></code></pre>
+    <p>Nested code without trimming:</p>
+    <pre><code data-src="https://raw.githubusercontent.com/torvalds/linux/refs/heads/master/kernel/async.c" data-lines="264-270" data-trim="false"></code></pre>
+    <p>Embedded code:</p>
+    <pre><code>Code without source</code></pre>
+    <script>
+        codequote.all(() => {
+            console.log("All code quotes have been processed.");
+        });
+    </script>
+</body>
+</html>
