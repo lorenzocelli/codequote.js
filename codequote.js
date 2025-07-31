@@ -18,30 +18,18 @@ const codequote = (function () {
     return code;
   }
 
-  function request(url) {
-    return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-      xhr.open("GET", url);
-      xhr.onload = () => resolve(xhr.responseText);
-      xhr.onerror = () =>
-        reject({
-          status: xhr.status,
-          statusText: xhr.statusText,
-        });
-      xhr.send();
+  async function getText(url) {
+    return fetch(url)
+    .then(response => {
+      if (response.ok) {
+        return response.text();
+      }
     });
   }
 
-  function fetchCode(codeUrl, fromLine, toLine, trim) {
-    return new Promise(function (resolve, reject) {
-      request(codeUrl)
-        .then(function (response) {
-          const code = extractLines(response, fromLine, toLine, trim);
-          resolve(code);
-        })
-        .catch(function (err) {
-          reject(err);
-        });
+  async function fetchCode(codeUrl, fromLine, toLine, trim) {
+    return getText(codeUrl).then(response => {
+       return extractLines(response, fromLine, toLine, trim);
     });
   }
 
