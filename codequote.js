@@ -19,8 +19,7 @@ const codequote = (function () {
   }
 
   async function getText(url) {
-    return fetch(url)
-    .then(response => {
+    return fetch(url).then((response) => {
       if (response.ok) {
         return response.text();
       }
@@ -28,8 +27,8 @@ const codequote = (function () {
   }
 
   async function fetchCode(codeUrl, fromLine, toLine, trim) {
-    return getText(codeUrl).then(response => {
-       return extractLines(response, fromLine, toLine, trim);
+    return getText(codeUrl).then((response) => {
+      return extractLines(response, fromLine, toLine, trim);
     });
   }
 
