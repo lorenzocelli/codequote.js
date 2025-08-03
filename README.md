@@ -25,7 +25,7 @@ To use the library, you can either download the `codequote.js` file and include 
 To include the library using [jsDelivr](https://www.jsdelivr.com/) and retrieve the source for all `code` blocks you can use the following code snippet:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/lorenzocelli/codequote.js@1.0.0/codequote.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/lorenzocelli/codequote.js@2.0.0/codequote.js"></script>
 <script>codequote.all();</script>
 ```
 
