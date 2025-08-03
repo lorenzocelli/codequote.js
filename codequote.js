@@ -23,10 +23,9 @@ const codequote = (function () {
       if (response.ok) {
         return response.text();
       }
-      throw new Error(
-        `Failed to fetch (${response.status})`,
-        { cause: response },
-      );
+      throw new Error(`Failed to fetch (${response.status})`, {
+        cause: response,
+      });
     });
   }
 
