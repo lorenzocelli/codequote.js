@@ -18,7 +18,7 @@ const codequote = (function () {
     return code;
   }
 
-  async function getText(url) {
+  function getText(url) {
     return fetch(url).then((response) => {
       if (response.ok) {
         return response.text();
@@ -26,7 +26,7 @@ const codequote = (function () {
     });
   }
 
-  async function fetchCode(codeUrl, fromLine, toLine, trim) {
+  function fetchCode(codeUrl, fromLine, toLine, trim) {
     return getText(codeUrl).then((response) => {
       return extractLines(response, fromLine, toLine, trim);
     });
@@ -37,7 +37,7 @@ const codequote = (function () {
 
     const promises = Array.from(elements)
       .filter((element) => SRC_ATT in element.dataset)
-      .map(async (element) => {
+      .map((element) => {
         let from = -1;
         let to = -1;
 
