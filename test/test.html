@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CodeQuote Test</title>
-    <script src="./codequote.js" type="text/javascript"></script>
+    <script src="../codequote.js" type="text/javascript"></script>
     <style>
         p {
             margin-top: 30px;
@@ -17,6 +17,9 @@
     </style>
 </head>
 <body>
+    <script>
+        codequote.all();
+    </script>
     <h1>Codequote test</h1>
     <p>Code snippets from the Linux kernel, lines 714-729 of watchdog.c:</p>
     <pre><code data-src="https://raw.githubusercontent.com/torvalds/linux/refs/heads/master/kernel/watchdog.c" data-lines="714-729"></code></pre>
@@ -28,8 +31,11 @@
     <pre><code data-src="https://raw.githubusercontent.com/torvalds/linux/refs/heads/master/kernel/async.c" data-lines="264-270" data-trim="false"></code></pre>
     <p>Embedded code:</p>
     <pre><code>Code without source</code></pre>
-    <script>
-        codequote.all();
-    </script>
+    <p>Non-existent url:</p>
+    <pre><code data-src="https://asdlasdkasdjasdbbb.com/assdj.c"></code></pre>
+    <p>400:</p>
+    <pre><code data-src="https://raw.githubusercontent.com/assasd213jjdj.c"></code></pre>
+    <p>404:</p>
+    <pre><code data-src="https://raw.githubusercontent.com/lorenzocelli/codequote.js/refs/heads/main/asdas.c"></code></pre>
 </body>
 </html>
