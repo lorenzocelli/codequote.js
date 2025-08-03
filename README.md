@@ -41,7 +41,7 @@ codequote.all(() => {
 
 ## Options
 
-To further customize the behavior of the library, you can pass an object to the `all` method. The object can contain a number of callback functions that will be invoked at different stages of the code fetching process. The available options are:
+To further customize the behavior of the library, you can pass an object to the `all` method. The object allows to specify a number of callback functions that will be invoked at different stages of the code fetching process. The available options are:
 
 - `onReady: () => {...}`
 A callback function that will be executed once all quotes have been fetched.
@@ -71,3 +71,5 @@ Here is an example:
     });
 </script>
 ```
+
+All keys are optional so there is no need to provide a callback if you are happy with the default behavior. 

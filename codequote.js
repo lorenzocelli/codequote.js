@@ -90,11 +90,19 @@ const codequote = (function () {
     element.textContent = code;
   }
 
+  /**
+   * Fetches all quotes and applies them to code elements on the page.
+   * @param {Object} options - Options object.
+   * @param {Function} options.onReady - Called when everything’s done. Default: do nothing.
+   * @param {Function} options.onFetchStart - Called at fetch start. Default: shows loading text.
+   * @param {Function} options.onError - Called on error. Default: logs and shows failure text.
+   * @param {Function} options.onFetch - Called on success. Default: injects fetched code as text.
+   */
   ns.all = function (options) {
     const onReady =
       options?.onReady || (typeof options === "function" ? options : () => {});
-    const onError = options?.onError || defaultOnError;
     const onFetchStart = options?.onFetchStart || defaultOnFetchStart;
+    const onError = options?.onError || defaultOnError;
     const onFetch = options?.onFetch || defaultOnFetch;
     onDOMReady(() => quoteAll(onReady, onError, onFetchStart, onFetch));
   };
