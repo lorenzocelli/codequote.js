@@ -33,32 +33,29 @@ const codequote = (function () {
   }
 
   function quoteAll(callback) {
-    let promises = [];
     const elements = document.querySelectorAll("code");
 
-    elements.forEach(function (element) {
-      if (!(SRC_ATT in element.dataset)) return;
+    const promises = Array.from(elements)
+      .filter((element) => SRC_ATT in element.dataset)
+      .map(async (element) => {
+        let from = -1;
+        let to = -1;
 
-      let from = -1;
-      let to = -1;
-
-      if (LINES_ATT in element.dataset) {
-        const lines = element.dataset[LINES_ATT].split("-");
-        if (lines.length === 2) {
-          from = parseInt(lines[0]);
-          to = parseInt(lines[1]);
+        if (LINES_ATT in element.dataset) {
+          const lines = element.dataset[LINES_ATT].split("-");
+          if (lines.length === 2) {
+            from = parseInt(lines[0]);
+            to = parseInt(lines[1]);
+          }
         }
-      }
-      let trim = true;
-      if (TRIM_ATT in element.dataset) {
-        trim = element.dataset[TRIM_ATT] === "true";
-      }
-      let p = fetchCode(element.dataset[SRC_ATT], from, to, trim);
-      p.then(function (code) {
-        element.textContent = code;
+        let trim = true;
+        if (TRIM_ATT in element.dataset) {
+          trim = element.dataset[TRIM_ATT] === "true";
+        }
+        return fetchCode(element.dataset[SRC_ATT], from, to, trim).then(
+          (code) => (element.textContent = code),
+        );
       });
-      promises.push(p);
-    });
 
     Promise.all(promises).finally(callback);
   }
