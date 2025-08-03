@@ -92,7 +92,7 @@ const codequote = (function () {
 
   /**
    * Fetches all quotes and applies them to code elements on the page.
-   * @param {Object} options - Options object.
+   * @param {Object|Function} options - Options object. If a function is passed, it will be used as onReady callback.
    * @param {Function} options.onReady - Called when everything’s done. Default: do nothing.
    * @param {Function} options.onFetchStart - Called at fetch start. Default: shows loading text.
    * @param {Function} options.onError - Called on error. Default: logs and shows failure text.
