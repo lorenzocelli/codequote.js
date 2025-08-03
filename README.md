@@ -38,3 +38,36 @@ codequote.all(() => {
 })
 </script>
 ```
+
+## Options
+
+To further customize the behavior of the library, you can pass an object to the `all` method. The object can contain a number of callback functions that will be invoked at different stages of the code fetching process. The available options are:
+
+- `onReady: () => {...}`
+A callback function that will be executed once all quotes have been fetched.
+*Default*: do nothing.
+
+- `onFetchStart: (element) => {...}`
+A callback function that will be executed when a quote fetch starts.
+*Default*: display `Loading code...` text.
+
+- `onError: (element, error) => {...}`
+A callback function that will be executed if an error occurs while fetching a quote.
+*Default*: log the error to the console and display `Failed to fetch code` text.
+
+- `onFetch: (element, code) => {...}`
+A callback function that will be executed when a quote is successfully fetched.
+*Default*: replace the code element's text content with the fetched code.
+
+Here is an example:
+
+```html
+<script>
+    codequote.all({
+        onReady: () => console.log("Done!"),
+        onFetchStart: (element) => (element.textContent = "⏳"),
+        onError: (element, error) => (element.textContent = `💥 ${error.message}`),
+        onFetch: (element, code) => (element.textContent = code)
+    });
+</script>
+```
